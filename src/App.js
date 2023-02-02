@@ -18,6 +18,10 @@ function App() {
     }
   }
 
+  async function signOut() {
+    await supabase.auth.signOut();
+  }
+
   return (
     <div className="App">
       <div style={{ width: "400px", margin: "30px auto" }}>
