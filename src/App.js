@@ -22,12 +22,15 @@ function App() {
     await supabase.auth.signOut();
   }
 
+  console.log(session);
+
   return (
     <div className="App">
       <div style={{ width: "400px", margin: "30px auto" }}>
         {session ? (
           <>
             <h2>Hey there {session.user.email}</h2>
+            <button onClick={() => signOut()}>Sign Out</button>
           </>
         ) : (
           <>
