@@ -3,6 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://udcmatwaayidfdqnsric.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkY21hdHdhYXlpZGZkcW5zcmljIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzUzNzQwMTEsImV4cCI6MTk5MDk1MDAxMX0.zyUdV5XBDUmxYjvoQo2eS98Gh9-clMqwakhjO-eVmNU"
+)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
