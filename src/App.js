@@ -1,9 +1,18 @@
 import "./App.css";
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import {
+  useSession,
+  useSupabaseClient,
+  useSessionContext,
+} from "@supabase/auth-helpers-react";
 
 function App() {
   const session = useSession(); // tokens
   const supabase = useSupabaseClient(); // talk to supabase!
+  const { isLoading } = useSessionContext();
+
+  if (isLoading) {
+    return <></>;
+  }
 
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
