@@ -37,6 +37,7 @@ function App() {
   }
 
   console.log(session);
+  console.log(start);
 
   return (
     <div className="App">
@@ -44,6 +45,10 @@ function App() {
         {session ? (
           <>
             <h2>Hey there {session.user.email}</h2>
+            <p>Start of your event</p>
+            <DateTimePicker onChange={setStart} value={start} />
+            <p>End of your event</p>
+            <DateTimePicker onChange={setEnd} value={end} />
             <button onClick={() => signOut()}>Sign Out</button>
           </>
         ) : (
