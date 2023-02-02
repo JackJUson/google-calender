@@ -4,8 +4,13 @@ import {
   useSupabaseClient,
   useSessionContext,
 } from "@supabase/auth-helpers-react";
+import DateTimePicker from "react-datetime-picker";
+import React, { useState } from "react";
 
 function App() {
+  const [start, setStart] = useState(new Date());
+  const [end, setEnd] = useState(new Date());
+
   const session = useSession(); // tokens
   const supabase = useSupabaseClient(); // talk to supabase!
   const { isLoading } = useSessionContext();
