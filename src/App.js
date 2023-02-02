@@ -10,6 +10,8 @@ import React, { useState } from "react";
 function App() {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
+  const [eventName, setEventName] = useState("");
+  const [eventDescription, setEventDescription] = useState("");
 
   const session = useSession(); // tokens
   const supabase = useSupabaseClient(); // talk to supabase!
@@ -38,6 +40,8 @@ function App() {
 
   console.log(session);
   console.log(start);
+  console.log(eventName);
+  console.log(eventDescription);
 
   return (
     <div className="App">
@@ -49,6 +53,16 @@ function App() {
             <DateTimePicker onChange={setStart} value={start} />
             <p>End of your event</p>
             <DateTimePicker onChange={setEnd} value={end} />
+
+            <p>Event Name</p>
+            <input type="text" onChange={(e) => setEventName(e.target.value)} />
+
+            <p>Event Description</p>
+            <input
+              type="text"
+              onChange={(e) => setEventDescription(e.target.value)}
+            />
+            <hr />
             <button onClick={() => signOut()}>Sign Out</button>
           </>
         ) : (
