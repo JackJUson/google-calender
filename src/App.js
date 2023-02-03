@@ -38,6 +38,21 @@ function App() {
     await supabase.auth.signOut();
   }
 
+  async function createCalendarEvent() {
+    const event = {
+      summary: eventName,
+      description: eventDescription,
+      start: {
+        dateTime: start.toISOString(), // Date.toISOString() for google
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Sydney
+      },
+      end: {
+        dateTime: end.toISOString(), // Date.toISOString() for google
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Sydney
+      },
+    };
+  }
+
   console.log(session);
   console.log(start);
   console.log(eventName);
@@ -62,7 +77,14 @@ function App() {
               type="text"
               onChange={(e) => setEventDescription(e.target.value)}
             />
+
             <hr />
+
+            <button onClick={() => createCalendarEvent()}>
+              Create Calendar Event
+            </button>
+            <br />
+            <br />
             <button onClick={() => signOut()}>Sign Out</button>
           </>
         ) : (
