@@ -51,6 +51,23 @@ function App() {
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Sydney
       },
     };
+    await fetch(
+      "https://www.googleapis.com/calendar/v3/calendars/primary/events",
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + session.provider_token, // Access token for google
+        },
+        body: JSON.stringify(event),
+      }
+    )
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        console.log(data);
+        alert("Event created check your Google Calender!");
+      });
   }
 
   console.log(session);
